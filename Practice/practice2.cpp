@@ -7,17 +7,21 @@ class BankAccount
 public:
     string accountName;
     int Balance;
+
+    void display()
+    {
+
+        cout << "Name: " << accountName << endl;
+        cout << "Balance: " << Balance;
+    }
 };
 
 int main()
 {
     BankAccount myAccount;
-
     myAccount.accountName = "Ali Shan";
     myAccount.Balance = 500;
-
-    cout << "Name: " << myAccount.accountName << endl;
-    cout << "Balance: " << myAccount.Balance;
+    myAccount.display();
 
     return 0;
 }
