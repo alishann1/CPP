@@ -76,5 +76,7 @@ int main()
     cout << "Please enter the size of you array: ";
     cin >> n;
 
+    int arr[n];
+
     return 0;
 }
