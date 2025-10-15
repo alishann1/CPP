@@ -1,27 +1,33 @@
 #include <iostream>
 using namespace std;
 
-class BankAccount
+class Human
 {
-
 public:
-    string accountName;
-    int Balance;
+    string name;
+    string occupation;
+    int age;
 
-    void display()
+    void eat()
     {
+        cout << "The human is eating \n";
+    }
 
-        cout << "Name: " << accountName << endl;
-        cout << "Balance: " << Balance;
+    void sleep()
+    {
+        cout << "This human can sleep \n";
     }
 };
 
 int main()
 {
-    BankAccount myAccount;
-    myAccount.accountName = "Ali Shan";
-    myAccount.Balance = 500;
-    myAccount.display();
+    Human human1;
+    human1.name = "John";
+    human1.age = 23;
+    human1.occupation = "Developer";
+
+    human1.eat();
+    human1.sleep();
 
     return 0;
 }
