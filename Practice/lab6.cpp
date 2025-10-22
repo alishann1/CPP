@@ -15,12 +15,12 @@ private:
 public:
     Stack()
     {
-        top = NULL;
+        top = nullptr;
     }
 
     bool isEmpty()
     {
-        return top == NULL;
+        return top == nullptr;
     }
 
     void push(int value)
@@ -31,6 +31,7 @@ public:
         top = newNode;
         cout << value << " pushed to stack.\n";
     }
+
     void pop()
     {
         if (isEmpty())
@@ -40,11 +41,10 @@ public:
         }
         Node *temp = top;
         cout << "Popped: " << top->data << endl;
-        top = top->next; // Move top down
-        delete temp;     // Free memory
+        top = top->next;
+        delete temp;
     }
 
-    // Function to view the top element
     int peek()
     {
         if (isEmpty())
@@ -54,18 +54,8 @@ public:
         }
         return top->data;
     }
-
-    // Destructor to free memory
-    ~Stack()
-    {
-        while (!isEmpty())
-        {
-            pop();
-        }
-    }
 };
 
-// Driver code
 int main()
 {
     Stack s;
@@ -85,4 +75,4 @@ int main()
         cout << "Stack is not empty.\n";
 
     return 0;
-};
+}
