@@ -32,54 +32,58 @@ public:
 
     bool isEmpty()
     {
-        return currSize == 0;
+        return front == nullptr;
     }
 
     void enqueue(int val)
     {
         Node *newNode = new Node(val);
-
         if (isEmpty())
         {
             front = rear = newNode;
         }
-
         else
         {
             rear->next = newNode;
             rear = newNode;
         }
         currSize++;
-        cout << val << " enqueued to queue\n";
+        cout << val << " enqueued.\n";
     }
 
-    void display()
+    // Step 5: Dequeue implementation
+    int dequeue()
     {
         if (isEmpty())
         {
-            cout << "Queue is empty\n";
-            return;
+            cout << "Queue Underflow\n";
+            return -1;
         }
         Node *temp = front;
-        while (temp != nullptr)
+        int dequeuedValue = temp->data;
+        front = front->next;
+        delete temp;
+        currSize--;
+
+        // If queue is now empty, ensure rear is also NULL
+        if (front == nullptr)
         {
-            cout << temp->data << " -> ";
-            temp = temp->next;
+            rear = nullptr;
         }
-        cout << "NULL\n";
+        return dequeuedValue;
     }
 };
 
 int main()
 {
     myQueue q;
-
     q.enqueue(10);
     q.enqueue(20);
-    q.enqueue(30);
 
-    cout << "Current Queue: ";
-    q.display();
+    cout << "Dequeued: " << q.dequeue() << endl;
+    cout << "Dequeued: " << q.dequeue() << endl;
+
+       q.dequeue();
 
     return 0;
 }
