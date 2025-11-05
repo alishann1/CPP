@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// Step 1: Create a Node class
 class Node
 {
 public:
@@ -16,7 +15,6 @@ public:
     }
 };
 
-// Step 2: Create a myQueue class
 class myQueue
 {
 private:
@@ -36,20 +34,52 @@ public:
     {
         return currSize == 0;
     }
+
+    void enqueue(int val)
+    {
+        Node *newNode = new Node(val);
+
+        if (isEmpty())
+        {
+            front = rear = newNode;
+        }
+
+        else
+        {
+            rear->next = newNode;
+            rear = newNode;
+        }
+        currSize++;
+        cout << val << " enqueued to queue\n";
+    }
+
+    void display()
+    {
+        if (isEmpty())
+        {
+            cout << "Queue is empty\n";
+            return;
+        }
+        Node *temp = front;
+        while (temp != nullptr)
+        {
+            cout << temp->data << " -> ";
+            temp = temp->next;
+        }
+        cout << "NULL\n";
+    }
 };
 
 int main()
 {
     myQueue q;
 
-    if (q.isEmpty())
-    {
-        cout << "The queue is empty." << endl;
-    }
-    else
-    {
-        cout << "The queue is not empty." << endl;
-    }
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+
+    cout << "Current Queue: ";
+    q.display();
 
     return 0;
 }
