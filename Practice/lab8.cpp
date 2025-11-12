@@ -51,7 +51,6 @@ public:
         cout << val << " enqueued.\n";
     }
 
-    // Step 5: Dequeue implementation
     int dequeue()
     {
         if (isEmpty())
@@ -65,7 +64,6 @@ public:
         delete temp;
         currSize--;
 
-        // If queue is now empty, ensure rear is also NULL
         if (front == nullptr)
         {
             rear = nullptr;
@@ -83,7 +81,7 @@ int main()
     cout << "Dequeued: " << q.dequeue() << endl;
     cout << "Dequeued: " << q.dequeue() << endl;
 
-       q.dequeue();
+    q.dequeue();
 
     return 0;
 }
