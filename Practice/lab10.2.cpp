@@ -1,5 +1,5 @@
 #include "lab10.cpp"
 
-void add() {
+void add(TreeNode(Object* x)) {
 
 };
