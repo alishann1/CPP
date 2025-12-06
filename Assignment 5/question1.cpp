@@ -1,9 +1,8 @@
 #include <iostream>
-#include <queue> // Required for Level Order Traversal
+#include <queue>
 
 using namespace std;
 
-// 1. Define the Node structure
 struct Node
 {
     long long phoneNumber;
@@ -18,15 +17,11 @@ struct Node
     }
 };
 
-// 2. Define the Contact Directory Class (BST)
 class ContactDirectory
 {
 private:
     Node *root;
 
-    // --- Private Helper Functions (Recursion) ---
-
-    // Recursive Insert
     Node *insert(Node *node, long long key)
     {
         if (node == nullptr)
@@ -41,11 +36,10 @@ private:
         {
             node->right = insert(node->right, key);
         }
-        // Duplicate keys are ignored in this implementation
+
         return node;
     }
 
-    // Recursive Search
     Node *search(Node *node, long long key)
     {
         if (node == nullptr || node->phoneNumber == key)
@@ -59,7 +53,6 @@ private:
         return search(node->right, key);
     }
 
-    // Recursive Traversals
     void inorder(Node *node)
     {
         if (node == nullptr)
@@ -88,20 +81,17 @@ private:
     }
 
 public:
-    // Constructor
     ContactDirectory()
     {
         root = nullptr;
     }
 
-    // --- Requirement 1: Insert a New Contact ---
     void addContact(long long key)
     {
         root = insert(root, key);
         cout << "Contact " << key << " has been added to the directory" << endl;
     }
 
-    // --- Requirement 2: Search for a Contact ---
     void findContact(long long key)
     {
         Node *result = search(root, key);
@@ -114,8 +104,6 @@ public:
             cout << "Contact " << key << " not found." << endl;
         }
     }
-
-    // --- Requirement 3: Display Traversals ---
 
     void displayTraversals()
     {
@@ -138,7 +126,6 @@ public:
         cout << endl;
     }
 
-    // Level Order requires a Queue (Iterative approach)
     void displayLevelOrder()
     {
         if (root == nullptr)
@@ -162,26 +149,20 @@ public:
     }
 };
 
-// Main function to test the requirements
 int main()
 {
     ContactDirectory dir;
 
-    // 1. Insert Contacts
     cout << "--- Adding Contacts ---" << endl;
-    dir.addContact(4165551212); // Root
-    dir.addContact(3001234567); // Left child (smaller)
-    dir.addContact(5009876543); // Right child (larger)
+    dir.addContact(4165551212);
+    dir.addContact(3001234567);
+    dir.addContact(5009876543);
     dir.addContact(3125550000);
     dir.addContact(4165559999);
 
     cout << "\n--- Searching Contacts ---" << endl;
-    // 2. Search Success
     dir.findContact(4165551212);
-    // 2. Search Failure
     dir.findContact(9999999999);
-
-    // 3. Display all traversals
     dir.displayTraversals();
 
     return 0;
